@@ -19,7 +19,7 @@ class SendPostCreatedNotificationJob implements ShouldQueue
     /**
      * Create a new job instance.
      */
-    protected $post;
+    public $post;
     public function __construct(Post $post)
     {
         $this->post = $post;
@@ -31,7 +31,8 @@ class SendPostCreatedNotificationJob implements ShouldQueue
     public function handle()
     {
         $users = User::all();
-        dd($users);
+        // dd($users);
+        // dd('hejndskj');
         foreach ($users as $user) {
             // dd($user);
             Mail::to($user->email)->send(new PostCreatedMail($this->post));

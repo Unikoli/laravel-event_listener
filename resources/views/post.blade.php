@@ -41,12 +41,21 @@
         .post a:hover {
             background-color: #0056b3;
         }
+        button {
+            background-color: yellow;
+        }
+        button a:hover {
+            
+            background-color: lightgreen;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
         <h1>Posts</h1>
+        <button><a href="{{url('postAdd')}}">Add Post </a></button>
+        
         <table>
             <thead>
                 <tr>
