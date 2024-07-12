@@ -19,7 +19,7 @@ class SendPostCreatedNotificationJob implements ShouldQueue
     /**
      * Create a new job instance.
      */
-    protected $post;
+    public $post;
     public function __construct(Post $post)
     {
         $this->post = $post;
