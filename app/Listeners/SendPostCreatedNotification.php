@@ -25,17 +25,12 @@ class SendPostCreatedNotification
     /**
      * Handle the event.
      */
-    public function handle(PostCreated $event)
+    public function handle(PostCreated $post)
     {
-        // SendPostCreatedNotificationJob::dispatch($event->post);
-        $post = $event->post;
-        $users = User::all();
-        // dd($users);
-        foreach ($users as $user) {
-            // dd($user);
-            Mail::to($user->email)->send(new PostCreatedMail($post));
-            // dd('heyheyfdgdsfdsf123');
-        }
+        
+        SendPostCreatedNotificationJob::dispatch($post->post);
+        
+        
         
     }
 }
