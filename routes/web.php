@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('forbiddenError');
 });
 Route::get('register',[UserController::class,'register_index']);
 Route::post('register',[UserController::class,'register_store']);
@@ -24,8 +24,14 @@ Route::post('register',[UserController::class,'register_store']);
 Route::get('login',[UserController::class,'login_index']);
 Route::post('login',[UserController::class,'authenticate']);
 
-Route::get('posts',[PostController::class,'post_index']);
-Route::get('postAdd',[PostController::class,'post_create']);
-Route::post('postAdd',[PostController::class,'post_store']);
+// Route::get('posts',[PostController::class,'post_index']);
+// Route::get('postAdd',[PostController::class,'post_create']);
+// Route::post('postAdd',[PostController::class,'post_store']);
 
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('posts', [PostController::class, 'post_index']);
+    Route::get('postAdd', [PostController::class, 'post_create']);
+    Route::post('postAdd', [PostController::class, 'post_store']);
+});
+// Route::get('/forbidden',[PostController::class,'post_index']);
 
