@@ -92,7 +92,9 @@
             <div class="form-group">
                 <button type="submit">Login</button>
             </div>
-            <div class="toggle-link"href="{{ url('register') }}">Don't have an account? Register</div>
+            <div class="toggle-link" >
+                <a href="{{url('register')}}">Dont have an account?</a>
+            </div> 
         </form>
     </div>
 </body>
